@@ -4,7 +4,6 @@ import flixel.FlxSprite;
 
 class Office extends FlxSprite
 {
-
     public var panSpeed:Float;
 
     public function new(x:Float, y:Float)

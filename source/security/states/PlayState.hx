@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import security.animatronics.Animatronic1;
 import security.objects.Office;
 
 class PlayState extends FlxState
@@ -13,6 +14,7 @@ class PlayState extends FlxState
 
 	var leftPan:FlxObject;
 	var rightPan:FlxObject;
+	var animatronic1:Animatronic1;
 	override public function create()
 	{
 		super.create();
@@ -26,12 +28,14 @@ class PlayState extends FlxState
 		leftPan.scrollFactor.set(0, 0);
 		add(rightPan);
 		add(leftPan);
+		animatronic1 = new Animatronic1();
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
+		// Handles office scrolling and making sure it doesn't move off screen
 		var minX:Float = FlxG.width - office.width;
 		var maxX:Float = 0;
 
