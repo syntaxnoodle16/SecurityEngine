@@ -4,6 +4,7 @@ import flixel.FlxBasic;
 import security.states.PlayState;
 import security.substates.JumpscareSubState;
 import security.systems.Animatronic;
+import security.systems.Cam;
 
 class NightManager extends FlxBasic
 {
@@ -12,6 +13,8 @@ class NightManager extends FlxBasic
     public var animatronics:Array<Animatronic>;
 
     public var rooms:Array<Room>;
+
+	public var cams:Array<Cam>;
 
 	public var animatronic1:Animatronic;
 
@@ -38,7 +41,13 @@ class NightManager extends FlxBasic
         animatronics = [];
 
 		animatronics.push(animatronic1);
-		officeRoomID = 6;
+		officeRoomID = 5;
+
+		cams = [
+    		new Cam(0, 1, "Show Stage"),
+    		new Cam(1, 2, "Dining Area"),
+    		new Cam(2, 3, "West Hall")
+		];
 	}
 
 	override public function update(elapsed:Float):Void
