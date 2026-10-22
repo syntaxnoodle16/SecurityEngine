@@ -11,11 +11,17 @@ class Animatronic
 
     public var moveOpportunityTime:Float; // The time it takes for the animatronic to have a movement opportunity
 
+    public var path:Array<Int>; // The path the animatronic takes to the office, in roomIDs
+    public var pathIndex:Int = 0;
+
     var moveTimer:FlxTimer;
 
     public function new(moveOpp:Float)
     {
         moveOpportunityTime = moveOpp;
+
+        path = [1, 2, 3, 4, 5, 6];
+        currentRoom = path[0];
 
         moveTimer = new FlxTimer();
         moveTimer.start(moveOpportunityTime, onMoveOpportunity, 0);
@@ -33,9 +39,19 @@ class Animatronic
 
         if (num <= aiLevel)
         {
-            currentRoom += 1;
-            trace("Animatronic moved to " + currentRoom);
-        } else if (num > aiLevel)
+            if (pathIndex < path.length - 1)
+            {
+                pathIndex++;
+                currentRoom = path[pathIndex];
+
+                trace("Animatronic moved to " + currentRoom);
+            }
+            else
+            {
+                trace("Animatronic is already at the end of its path");
+            }
+        }
+        else if (num > aiLevel)
         {
             trace("Animatronic did not move :(");
         }
