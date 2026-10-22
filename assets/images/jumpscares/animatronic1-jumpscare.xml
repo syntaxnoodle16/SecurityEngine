@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="animatronic1-jumpscare.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="jumpscare0000" x="634" y="521" width="4" height="4" frameX="0" frameY="0" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0001" x="282" y="551" width="236" height="34" frameX="-550" frameY="-688" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0002" x="0" y="551" width="282" height="69" frameX="-520" frameY="-653" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0003" x="317" y="426" width="313" height="117" frameX="-508" frameY="-605" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0004" x="634" y="320" width="317" height="201" frameX="-505" frameY="-521" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0005" x="634" y="0" width="317" height="320" frameX="-506" frameY="-402" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0006" x="317" y="0" width="317" height="426" frameX="-509" frameY="-296" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0007" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0008" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0009" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0010" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0011" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0012" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="jumpscare0013" x="0" y="0" width="317" height="551" frameX="-510" frameY="-171" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>

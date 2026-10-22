@@ -2,14 +2,15 @@ package security.states;
 
 import flixel.FlxG;
 import flixel.FlxObject;
-import flixel.FlxSprite;
 import flixel.FlxState;
 import security.objects.Office;
+import security.systems.NightManager;
 
 class PlayState extends FlxState
 {
 	var office:Office;
 
+	var nightManager:NightManager;
 
 	var leftPan:FlxObject;
 	var rightPan:FlxObject;
@@ -26,6 +27,8 @@ class PlayState extends FlxState
 		leftPan.scrollFactor.set(0, 0);
 		add(rightPan);
 		add(leftPan);
+		nightManager = new NightManager(this);
+		add(nightManager);
 	}
 
 	override public function update(elapsed:Float)
