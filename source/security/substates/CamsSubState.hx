@@ -28,4 +28,11 @@ class CamsSubState extends FlxSubState
         add(camImage);
         add(map);
     }
+
+    override public function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        
+    }
 }

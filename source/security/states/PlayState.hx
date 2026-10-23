@@ -16,12 +16,9 @@ class PlayState extends FlxState
 	var leftPan:FlxObject;
 	var rightPan:FlxObject;
 
-	var camsSubState:CamsSubState;
 	override public function create()
 	{
 		super.create();
-
-		camsSubState = new CamsSubState();
 
 		office = new Office(0, 0);
 		add(office);
@@ -56,7 +53,7 @@ class PlayState extends FlxState
 
 		if (FlxG.keys.justPressed.S)
 		{
-			this.openSubState(camsSubState);
+			this.openSubState(new CamsSubState());
 		}
 	}
 }
