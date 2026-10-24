@@ -17,7 +17,7 @@ class PlayState extends FlxState
 	var leftPan:FlxObject;
 	var rightPan:FlxObject;
 
-	var power:Int = 100;
+	public var power:Float = 100;
 
 	var currentTime:Int = 0; // The time, 0 = 12AM, 1 = 1AM, etc
 
@@ -53,6 +53,10 @@ class PlayState extends FlxState
 		hourTimer = new FlxTimer();
 
 		hourTimer.start(hourTime, changeHour, 7);
+
+		persistentUpdate = true;
+
+		currentTime = 0;
 
 
 		setAILevels();
@@ -135,5 +139,32 @@ class PlayState extends FlxState
     		office.rightDoorClosed = !office.rightDoorClosed;
     		office.rightDoor.visible = office.rightDoorClosed;
 		}
+
+
+
+
+		var usage:Int = 1; // base power usage
+
+    	if (office.leftDoorClosed)
+        	usage++;
+
+    	if (office.rightDoorClosed)
+        	usage++;
+
+    	if (office.leftLightOn)
+        	usage++;
+
+    	if (office.rightLightOn)
+        	usage++;
+
+    	power -= usage * elapsed;
+
+    	if (power <= 0)
+    	{
+    	    power = 0;
+    	    trace("Power out!");
+    	}
+
+		//FlxG.log.add("Usage: " + usage);
 	}
 }

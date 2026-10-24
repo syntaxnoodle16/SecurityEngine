@@ -29,6 +29,9 @@ class OfficeObject extends FlxGroup
     public var leftDoorClosed:Bool;
     public var rightDoorClosed:Bool;
 
+    public var leftLightOn:Bool;
+    public var rightLightOn:Bool;
+
     public function new(x:Float, y:Float)
     {
         super();

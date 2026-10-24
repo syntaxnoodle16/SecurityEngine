@@ -24,8 +24,6 @@ class CamsSubState extends FlxSubState
         super(FlxColor.BLACK);
 
         nightManager = _nightManager;
-
-        persistentUpdate = true; // Normally FlxSubState stops the FlxState it opened from from updating. Obviously we dont want that with the cameras lol
     }
 
     override public function create()
@@ -64,7 +62,7 @@ class CamsSubState extends FlxSubState
 
         loadCurrentCam();
 
-        if (FlxG.keys.justPressed.S)
+        if (FlxG.keys.justPressed.C)
         {
             this.close();
         }
