@@ -3,14 +3,14 @@ package security.states;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxState;
-import security.objects.Office;
+import security.objects.OfficeObject;
 import security.systems.NightManager;
 import security.substates.CamsSubState;
 import flixel.util.FlxTimer;
 
 class PlayState extends FlxState
 {
-	var office:Office;
+	var office:OfficeObject;
 
 	var nightManager:NightManager;
 
@@ -38,7 +38,7 @@ class PlayState extends FlxState
 	{
 		super.create();
 
-		office = new Office(0, 0);
+		office = new OfficeObject(0, 0);
 		add(office);
 
 		rightPan = new FlxObject(0, 0, 320, FlxG.height);
@@ -99,7 +99,7 @@ class PlayState extends FlxState
 		super.update(elapsed);
 
 		// Handles office scrolling and making sure it doesn't move off screen
-		var minX:Float = FlxG.width - office.width;
+		var minX:Float = FlxG.width - office.background.width;
 		var maxX:Float = 0;
 
 		if (FlxG.mouse.overlaps(leftPan) && office.x > minX)

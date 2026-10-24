@@ -19,6 +19,10 @@ class NightManager extends FlxBasic
 
 	public var officeRoomID:Int; // The room ID of the office, basically the animatronic will kill you if it reaches this room ID
 
+	public var leftDoorRoomID:Int; // The room ID for right outside the left door
+
+	public var rightDoorRoomID:Int; // The room ID for right outside the right door
+
 	var playState:PlayState;
 
 	var jumpscareSubState:JumpscareSubState;
@@ -39,7 +43,11 @@ class NightManager extends FlxBasic
 
 		animatronics.push(blueMan);
 
-		officeRoomID = 6;
+		officeRoomID = 7;
+
+		leftDoorRoomID = 5;
+
+		rightDoorRoomID = 6;
 
 		cams = [
     		new Cam(0, 1, "Show Stage", "ShowStage"),
