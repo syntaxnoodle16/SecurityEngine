@@ -119,7 +119,7 @@ class PlayState extends FlxState
 
 		if (currentTime == 6)
 		{
-			
+			endNight();
 		}
 	}
 }

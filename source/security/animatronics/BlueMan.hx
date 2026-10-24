@@ -9,5 +9,6 @@ class BlueMan extends Animatronic
         super(3.45);
 
         this.path = [1, 2, 3, 4, 6];
+        currentRoom = this.path[0];
     }
 }
