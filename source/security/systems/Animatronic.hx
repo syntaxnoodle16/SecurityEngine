@@ -51,8 +51,8 @@ class Animatronic
             {
                 var nextRoom:Int = path[pathIndex + 1];
                 var blockedByDoor:Bool =
-                    ((nextRoom == nightManager.leftDoorRoomID || currentRoom == nightManager.leftDoorRoomID) && office.leftDoorClosed)
-                    || ((nextRoom == nightManager.rightDoorRoomID || currentRoom == nightManager.rightDoorRoomID) && office.rightDoorClosed);
+                    ((nextRoom == nightManager.officeRoomID && currentRoom == nightManager.leftDoorRoomID) && office.leftDoorClosed)
+                    || ((nextRoom == nightManager.officeRoomID && currentRoom == nightManager.rightDoorRoomID) && office.rightDoorClosed);
 
                 if (blockedByDoor)
                 {
