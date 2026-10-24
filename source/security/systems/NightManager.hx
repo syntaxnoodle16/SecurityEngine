@@ -37,7 +37,7 @@ class NightManager extends FlxBasic
 
 		jumpscareSubState = new JumpscareSubState();
 
-		blueMan = new BlueMan();
+		blueMan = new BlueMan(playState.office, this);
 
         animatronics = [];
 

@@ -1,7 +1,9 @@
 package security.systems;
 
+import security.objects.OfficeObject;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
+import security.systems.NightManager;
 
 class Animatronic
 {
@@ -16,9 +18,15 @@ class Animatronic
 
     var moveTimer:FlxTimer;
 
-    public function new(moveOpp:Float)
+    var office:OfficeObject;
+
+    var nightManager:NightManager;
+
+    public function new(moveOpp:Float, _office:OfficeObject, _nightManager:NightManager)
     {
         moveOpportunityTime = moveOpp;
+        office = _office;
+        nightManager = _nightManager;
 
         path = [];
         currentRoom = path[0];
@@ -45,6 +53,15 @@ class Animatronic
                 currentRoom = path[pathIndex];
 
                 FlxG.log.add("Animatronic moved to " + currentRoom);
+
+                if (currentRoom == nightManager.leftDoorRoomID && office.leftDoorClosed)
+                {
+                    currentRoom = path[0]; // if the door is closed, go back to the beginning of the path
+                }
+                if (currentRoom == nightManager.rightDoorRoomID && office.rightDoorClosed)
+                {
+                    currentRoom = path[0]; // if the door is closed, go back to the beginning of the path
+                }
             }
             else
             {

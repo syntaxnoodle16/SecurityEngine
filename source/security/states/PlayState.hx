@@ -121,5 +121,19 @@ class PlayState extends FlxState
 		{
 			endNight();
 		}
+
+
+
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.leftDoorButton))
+		{
+    		office.leftDoorClosed = !office.leftDoorClosed;
+    		office.leftDoor.visible = office.leftDoorClosed;
+		}
+
+		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.rightDoorButton))
+		{
+    		office.rightDoorClosed = !office.rightDoorClosed;
+    		office.rightDoor.visible = office.rightDoorClosed;
+		}
 	}
 }

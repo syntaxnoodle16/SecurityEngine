@@ -18,13 +18,16 @@ class OfficeObject extends FlxGroup
     public var leftLightButton:FlxSprite;
     public var rightLightButton:FlxSprite;
 
-    var leftDoor:FlxSprite;
+    public var leftDoor:FlxSprite;
 
-    var rightDoor:FlxSprite;
+    public var rightDoor:FlxSprite;
 
 
     public var blueManLeftDoor:FlxSprite;
     public var blueManRightDoor:FlxSprite;
+
+    public var leftDoorClosed:Bool;
+    public var rightDoorClosed:Bool;
 
     public function new(x:Float, y:Float)
     {
@@ -61,6 +64,16 @@ class OfficeObject extends FlxGroup
         blueManRightDoor.visible = false;
         add(blueManLeftDoor);
         add(blueManRightDoor);
+
+        leftDoor = new FlxSprite(0, 0);
+        leftDoor.loadGraphic("assets/images/leftDoor.png");
+        leftDoor.visible = false;
+        add(leftDoor);
+
+        rightDoor = new FlxSprite(0, 0);
+        rightDoor.loadGraphic("assets/images/rightDoor.png");
+        rightDoor.visible = false;
+        add(rightDoor);
 
         panSpeed = 10;
     }
