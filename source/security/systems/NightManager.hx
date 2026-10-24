@@ -68,5 +68,14 @@ class NightManager extends FlxBasic
 				playState.openSubState(jumpscareSubState);
 			}
 		}
+
+		if (blueMan.currentRoom == leftDoorRoomID)
+		{
+			playState.office.blueManLeftDoor.visible = true;
+		}
+		if (blueMan.currentRoom == rightDoorRoomID)
+		{
+			playState.office.blueManRightDoor.visible = true;
+		}
     }
 }

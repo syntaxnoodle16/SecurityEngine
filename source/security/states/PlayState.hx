@@ -10,7 +10,7 @@ import flixel.util.FlxTimer;
 
 class PlayState extends FlxState
 {
-	var office:OfficeObject;
+	public var office:OfficeObject;
 
 	var nightManager:NightManager;
 

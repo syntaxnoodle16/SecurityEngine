@@ -22,6 +22,10 @@ class OfficeObject extends FlxGroup
 
     var rightDoor:FlxSprite;
 
+
+    public var blueManLeftDoor:FlxSprite;
+    public var blueManRightDoor:FlxSprite;
+
     public function new(x:Float, y:Float)
     {
         super();
@@ -34,20 +38,29 @@ class OfficeObject extends FlxGroup
         add(background);
 
         leftDoorButton = new FlxSprite(x + 25, y + 350);
-        leftDoorButton.loadGraphic("assets/images/DoorButton.png");
+        leftDoorButton.loadGraphic("assets/images/doorButton.png");
         add(leftDoorButton);
 
         rightDoorButton = new FlxSprite(x + 1200, y + 350);
-        rightDoorButton.loadGraphic("assets/images/DoorButton.png");
+        rightDoorButton.loadGraphic("assets/images/doorButton.png");
         add(rightDoorButton);
 
         leftLightButton = new FlxSprite(x + 25, y + 450);
-        leftLightButton.loadGraphic("assets/images/LightButton.png");
+        leftLightButton.loadGraphic("assets/images/lightButton.png");
         add(leftLightButton);
 
         rightLightButton = new FlxSprite(x + 1200, y + 450);
-        rightLightButton.loadGraphic("assets/images/LightButton.png");
+        rightLightButton.loadGraphic("assets/images/lightButton.png");
         add(rightLightButton);
+
+        blueManLeftDoor = new FlxSprite(0, 0);
+        blueManLeftDoor.visible = false;
+        blueManLeftDoor.loadGraphic('assets/images/animatronics/blueMan/LeftDoor.png');
+        blueManRightDoor = new FlxSprite(0, 0);
+        blueManRightDoor.loadGraphic('assets/images/animatronics/blueMan/RightDoor.png');
+        blueManRightDoor.visible = false;
+        add(blueManLeftDoor);
+        add(blueManRightDoor);
 
         panSpeed = 10;
     }
