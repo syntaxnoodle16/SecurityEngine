@@ -49,18 +49,22 @@ class Animatronic
         {
             if (pathIndex < path.length - 1)
             {
-                pathIndex++;
-                currentRoom = path[pathIndex];
+                var nextRoom:Int = path[pathIndex + 1];
+                var blockedByDoor:Bool =
+                    ((nextRoom == nightManager.leftDoorRoomID || currentRoom == nightManager.leftDoorRoomID) && office.leftDoorClosed)
+                    || ((nextRoom == nightManager.rightDoorRoomID || currentRoom == nightManager.rightDoorRoomID) && office.rightDoorClosed);
 
-                FlxG.log.add("Animatronic moved to " + currentRoom);
-
-                if (currentRoom == nightManager.leftDoorRoomID && office.leftDoorClosed)
+                if (blockedByDoor)
                 {
-                    currentRoom = path[0]; // if the door is closed, go back to the beginning of the path
+                    pathIndex = 0;
+                    currentRoom = path[0];
+                    FlxG.log.add("Animatronic was blocked by a closed door and returned to the start");
                 }
-                if (currentRoom == nightManager.rightDoorRoomID && office.rightDoorClosed)
+                else
                 {
-                    currentRoom = path[0]; // if the door is closed, go back to the beginning of the path
+                    pathIndex++;
+                    currentRoom = path[pathIndex];
+                    FlxG.log.add("Animatronic moved to " + currentRoom);
                 }
             }
             else

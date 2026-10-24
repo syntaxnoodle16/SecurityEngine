@@ -72,10 +72,18 @@ class NightManager extends FlxBasic
 		if (blueMan.currentRoom == leftDoorRoomID)
 		{
 			playState.office.blueManLeftDoor.visible = true;
+		} else
+		{
+			playState.office.blueManLeftDoor.visible = false;
 		}
+
+
 		if (blueMan.currentRoom == rightDoorRoomID)
 		{
 			playState.office.blueManRightDoor.visible = true;
+		} else
+		{
+			playState.office.blueManRightDoor.visible = false;
 		}
     }
 }
