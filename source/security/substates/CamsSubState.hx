@@ -37,10 +37,11 @@ class CamsSubState extends FlxSubState
 
         camImage = new FlxSprite(0, 0);
         add(camImage);
-        add(map);
 
         blueManOverlay = new FlxSprite(0, 0);
         add(blueManOverlay);
+
+        add(map);
 
         loadCurrentCam();
     }
@@ -61,11 +62,17 @@ class CamsSubState extends FlxSubState
             loadCurrentCam();
         }
 
-        selectedCam = Std.int(Math.max(0, Math.min(selectedCam, nightManager.cams.length - 1)));
+        loadCurrentCam();
+
+        if (FlxG.keys.justPressed.S)
+        {
+            this.close();
+        }
     }
 
     function loadCurrentCam()
     {
+        selectedCam = Std.int(Math.max(0, Math.min(selectedCam, nightManager.cams.length - 1)));
         var cam = nightManager.cams[selectedCam];
 
         camImage.loadGraphic(
