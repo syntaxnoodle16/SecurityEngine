@@ -53,7 +53,7 @@ class PlayState extends FlxState
 
 		if (FlxG.keys.justPressed.S)
 		{
-			this.openSubState(new CamsSubState());
+			this.openSubState(new CamsSubState(nightManager));
 		}
 	}
 }

@@ -1,8 +1,10 @@
 package security.substates;
 
+import security.systems.NightManager;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.FlxG;
 
 class CamsSubState extends FlxSubState
 {
@@ -11,9 +13,15 @@ class CamsSubState extends FlxSubState
 
     var camImage:FlxSprite;
 
-    public function new()
+    var nightManager:NightManager;
+
+    var selectedCam:Int = 0;
+
+    public function new(_nightManager:NightManager)
     {
         super(FlxColor.BLACK);
+
+        nightManager = _nightManager;
 
         persistentUpdate = true; // Normally FlxSubState stops the FlxState it opened from from updating. Obviously we dont want that with the cameras lol
     }
@@ -24,15 +32,37 @@ class CamsSubState extends FlxSubState
         map.loadGraphic("assets/images/cams/map.png");
 
         camImage = new FlxSprite(0, 0);
-        camImage.loadGraphic('assets/images/cams/rooms/ShowStage.png');
         add(camImage);
         add(map);
+
+        loadCurrentCam();
     }
 
     override public function update(elapsed:Float)
     {
         super.update(elapsed);
 
-        
+        if (FlxG.keys.justPressed.LEFT)
+        {
+            selectedCam--;
+            loadCurrentCam();
+        }
+
+        if (FlxG.keys.justPressed.RIGHT)
+        {
+            selectedCam++;
+            loadCurrentCam();
+        }
+
+        selectedCam = Std.int(Math.max(0, Math.min(selectedCam, nightManager.cams.length - 1)));
+    }
+
+    function loadCurrentCam()
+    {
+        var cam = nightManager.cams[selectedCam];
+
+        camImage.loadGraphic(
+            "assets/images/cams/rooms/" + cam.imageName + ".png"
+        );
     }
 }

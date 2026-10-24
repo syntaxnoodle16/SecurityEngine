@@ -5,6 +5,7 @@ import security.states.PlayState;
 import security.substates.JumpscareSubState;
 import security.systems.Animatronic;
 import security.systems.Cam;
+import security.animatronics.BlueMan;
 
 class NightManager extends FlxBasic
 {
@@ -16,8 +17,6 @@ class NightManager extends FlxBasic
 
 	public var cams:Array<Cam>;
 
-	public var animatronic1:Animatronic;
-
 	public var officeRoomID:Int; // The room ID of the office, basically the animatronic will kill you if it reaches this room ID
 
 	public var night:Int;
@@ -25,6 +24,8 @@ class NightManager extends FlxBasic
 	var playState:PlayState;
 
 	var jumpscareSubState:JumpscareSubState;
+
+	public var blueMan:BlueMan;
 
 	public function new(_playState:PlayState)
     {
@@ -34,19 +35,19 @@ class NightManager extends FlxBasic
 
 		jumpscareSubState = new JumpscareSubState();
 
-		animatronic1 = new Animatronic(5);
-
-		animatronic1.aiLevel = 20;
+		blueMan = new BlueMan();
 
         animatronics = [];
 
-		animatronics.push(animatronic1);
-		officeRoomID = 5;
+		animatronics.push(blueMan);
+
+		officeRoomID = 6;
 
 		cams = [
-    		new Cam(0, 1, "Show Stage"),
-    		new Cam(1, 2, "Dining Area"),
-    		new Cam(2, 3, "West Hall")
+    		new Cam(0, 1, "Show Stage", "ShowStage"),
+    		new Cam(1, 2, "Dining Area", "DiningArea"),
+    		new Cam(2, 3, "West Hall", "WestHall"),
+			new Cam(3, 4, "East Hall", "EastHall")
 		];
 	}
 

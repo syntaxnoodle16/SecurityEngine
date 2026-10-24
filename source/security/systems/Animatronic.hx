@@ -20,7 +20,7 @@ class Animatronic
     {
         moveOpportunityTime = moveOpp;
 
-        path = [1, 2, 3, 4, 5, 6];
+        path = [];
         currentRoom = path[0];
 
         moveTimer = new FlxTimer();
