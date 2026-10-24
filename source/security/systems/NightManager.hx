@@ -19,8 +19,6 @@ class NightManager extends FlxBasic
 
 	public var officeRoomID:Int; // The room ID of the office, basically the animatronic will kill you if it reaches this room ID
 
-	public var night:Int;
-
 	var playState:PlayState;
 
 	var jumpscareSubState:JumpscareSubState;

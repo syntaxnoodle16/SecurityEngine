@@ -44,16 +44,16 @@ class Animatronic
                 pathIndex++;
                 currentRoom = path[pathIndex];
 
-                trace("Animatronic moved to " + currentRoom);
+                FlxG.log.add("Animatronic moved to " + currentRoom);
             }
             else
             {
-                trace("Animatronic is already at the end of its path");
+                FlxG.log.add("Animatronic is already at the end of its path");
             }
         }
         else if (num > aiLevel)
         {
-            trace("Animatronic did not move :(");
+            FlxG.log.add("Animatronic did not move :(");
         }
     }
 }

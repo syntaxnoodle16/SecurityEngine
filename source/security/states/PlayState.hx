@@ -6,6 +6,7 @@ import flixel.FlxState;
 import security.objects.Office;
 import security.systems.NightManager;
 import security.substates.CamsSubState;
+import flixel.util.FlxTimer;
 
 class PlayState extends FlxState
 {
@@ -15,6 +16,23 @@ class PlayState extends FlxState
 
 	var leftPan:FlxObject;
 	var rightPan:FlxObject;
+
+	var power:Int = 100;
+
+	var currentTime:Int = 0; // The time, 0 = 12AM, 1 = 1AM, etc
+
+	var hourTime:Float = 45; // How long an hour in the game lasts in real time
+
+	var hourTimer:FlxTimer;
+
+	public var night:Int;
+
+	public function new(_night:Int)
+	{
+		super();
+
+		night = _night;
+	}
 
 	override public function create()
 	{
@@ -31,6 +49,49 @@ class PlayState extends FlxState
 		add(leftPan);
 		nightManager = new NightManager(this);
 		add(nightManager);
+
+		hourTimer = new FlxTimer();
+
+		hourTimer.start(hourTime, changeHour, 7);
+
+
+		setAILevels();
+
+		FlxG.log.add("PlayState Loaded! Night: " + night);
+	}
+
+	function changeHour(timer:FlxTimer)
+	{
+		currentTime += 1;
+	}
+
+	function endNight()
+	{
+		FlxG.switchState(()->new PlayState(night + 1));
+	}
+
+	function setAILevels()
+	{
+		if (night == 1)
+		{
+			nightManager.blueMan.aiLevel = 2;
+		}
+		if (night == 2)
+		{
+			nightManager.blueMan.aiLevel = 5;
+		}
+		if (night == 3)
+		{
+			nightManager.blueMan.aiLevel = 8;
+		}
+		if (night == 4)
+		{
+			nightManager.blueMan.aiLevel = 10;
+		}
+		if (night == 5)
+		{
+			nightManager.blueMan.aiLevel = 12;
+		}
 	}
 
 	override public function update(elapsed:Float)
@@ -54,6 +115,11 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.S)
 		{
 			this.openSubState(new CamsSubState(nightManager));
+		}
+
+		if (currentTime == 6)
+		{
+			
 		}
 	}
 }
