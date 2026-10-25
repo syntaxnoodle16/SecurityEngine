@@ -1,5 +1,6 @@
 package security.states;
 
+import security.systems.SaveData;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -113,7 +114,13 @@ class PlayState extends FlxState
 
 	function endNight()
 	{
-		FlxG.switchState(()->new PlayState(night + 1));
+		var nextNight = night + 1;
+		if (nextNight != 6 || nextNight != 7)
+		{
+			SaveData.save.data.night = nextNight;
+			SaveData.save.flush();
+			FlxG.switchState(()->new PlayState(nextNight));
+		}
 	}
 
 	function setAILevels()

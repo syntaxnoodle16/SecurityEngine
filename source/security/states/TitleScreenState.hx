@@ -1,5 +1,6 @@
 package security.states;
 
+import security.systems.SaveData;
 import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -48,8 +49,16 @@ class TitleScreenState extends FlxState
         {
             FlxG.switchState(()->new PlayState(currentNight));
         }
+        if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(loadGameButton))
+        {
+            var loadedNight:Int;
+            loadedNight = SaveData.save.data.night;
+            FlxG.switchState(()->new PlayState(loadedNight));
+        }
         if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(newGameButton))
         {
+            SaveData.save.data.night = 1;
+            SaveData.save.flush();
             FlxG.switchState(()->new PlayState(1));
         }
 
