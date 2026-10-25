@@ -174,13 +174,13 @@ class PlayState extends FlxState
 
 
 
-		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.leftDoorButton))
+		if (!powerOut && FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.leftDoorButton))
 		{
     		office.leftDoorClosed = !office.leftDoorClosed;
     		office.leftDoor.visible = office.leftDoorClosed;
 		}
 
-		if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.rightDoorButton))
+		if (!powerOut && FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.rightDoorButton))
 		{
     		office.rightDoorClosed = !office.rightDoorClosed;
     		office.rightDoor.visible = office.rightDoorClosed;
@@ -240,11 +240,16 @@ class PlayState extends FlxState
     		office.leftLightOn = false;
     		office.rightLightOn = false;
 
-    		// Max out all AI
+    		// Max out all AI (to kill the player faster, remove this if you want to add your own power outage sequence)
     		for (animatronic in nightManager.animatronics)
     		{
     		    animatronic.aiLevel = 20;
     		}
+		}
+
+		if (powerOut)
+		{
+			power = 0;
 		}
 
 		//FlxG.log.add("Usage: " + usage);
