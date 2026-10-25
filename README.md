@@ -9,12 +9,19 @@ This Engine is almost finished, but still has a few quirks. It is stable enough 
 
 ## To-Dos
 ✅Cameras
+
 ✅Doors
+
 ✅Night System
+
 ✅Animatronic AI
+
 ❌Lights
+
 ❌Custom Night
+
 ❌Save System
+
 ❌Finish Documentation
 
 ## Features
