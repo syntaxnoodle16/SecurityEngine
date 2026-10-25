@@ -25,17 +25,15 @@ class NightManager extends FlxBasic
 
 	var playState:PlayState;
 
-	var jumpscareSubState:JumpscareSubState;
-
 	public var blueMan:BlueMan;
+
+	var gameOver:Bool = false;
 
 	public function new(_playState:PlayState)
     {
 		super();
 
 		playState = _playState;
-
-		jumpscareSubState = new JumpscareSubState();
 
 		blueMan = new BlueMan(playState.office, this);
 
@@ -63,9 +61,10 @@ class NightManager extends FlxBasic
 
 		for (animatronic in animatronics)
 		{
-			if (animatronic.currentRoom == officeRoomID)
+			if (!gameOver && animatronic.currentRoom == officeRoomID)
 			{
-				playState.openSubState(jumpscareSubState);
+				gameOver = true;
+				playState.openSubState(new JumpscareSubState(animatronic.assetName));
 			}
 		}
 

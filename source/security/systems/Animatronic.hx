@@ -22,11 +22,14 @@ class Animatronic
 
     var nightManager:NightManager;
 
-    public function new(moveOpp:Float, _office:OfficeObject, _nightManager:NightManager)
+    public var assetName:String;
+
+    public function new(moveOpp:Float, _office:OfficeObject, _nightManager:NightManager, _assetName:String)
     {
         moveOpportunityTime = moveOpp;
         office = _office;
         nightManager = _nightManager;
+        assetName = _assetName;
 
         path = [];
         currentRoom = path[0];

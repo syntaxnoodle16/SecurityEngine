@@ -40,6 +40,8 @@ class PlayState extends FlxState
 
 	var hudCamera:FlxCamera;
 
+	public var powerOut:Bool = false;
+
 	public function new(_night:Int)
 	{
 		super();
@@ -156,7 +158,7 @@ class PlayState extends FlxState
 			office.x += office.panSpeed;
 		}
 
-		if (FlxG.keys.justPressed.S)
+		if (!powerOut && FlxG.keys.justPressed.S)
 		{
 			camsOpen = true;
 			this.openSubState(new CamsSubState(nightManager));
@@ -220,10 +222,30 @@ class PlayState extends FlxState
 			timeText.text = currentTime + " AM";
 		}
 
-    	if (power <= 0)
-    	{
-    	    power = 0;
-    	}
+		if (power <= 0 && !powerOut)
+		{
+    		power = 0;
+    		powerOut = true;
+
+			closeSubState();
+
+    		// Force doors open
+			office.leftDoorClosed = false;
+			office.rightDoorClosed = false;
+
+    		office.leftDoor.visible = false;
+    		office.rightDoor.visible = false;
+
+    		// Turn lights off
+    		office.leftLightOn = false;
+    		office.rightLightOn = false;
+
+    		// Max out all AI
+    		for (animatronic in nightManager.animatronics)
+    		{
+    		    animatronic.aiLevel = 20;
+    		}
+		}
 
 		//FlxG.log.add("Usage: " + usage);
 	}
