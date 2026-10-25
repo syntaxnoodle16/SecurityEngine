@@ -5,6 +5,7 @@ import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.FlxG;
+import security.states.PlayState;
 
 class CamsSubState extends FlxSubState
 {
@@ -64,6 +65,7 @@ class CamsSubState extends FlxSubState
 
         if (FlxG.keys.justPressed.C)
         {
+            cast(_parentState, PlayState).camsOpen = false;
             this.close();
         }
     }

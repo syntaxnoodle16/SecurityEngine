@@ -1,5 +1,6 @@
 package security.states;
 
+import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxState;
@@ -7,6 +8,7 @@ import security.objects.OfficeObject;
 import security.systems.NightManager;
 import security.substates.CamsSubState;
 import flixel.util.FlxTimer;
+import flixel.FlxCamera;
 
 class PlayState extends FlxState
 {
@@ -27,6 +29,17 @@ class PlayState extends FlxState
 
 	public var night:Int;
 
+	public var camsOpen:Bool = false;
+
+	// UI
+
+	var powerText:FlxText;
+	var usageText:FlxText;
+	var timeText:FlxText;
+	var nightText:FlxText;
+
+	var hudCamera:FlxCamera;
+
 	public function new(_night:Int)
 	{
 		super();
@@ -37,6 +50,8 @@ class PlayState extends FlxState
 	override public function create()
 	{
 		super.create();
+
+		power = 100.99;
 
 		office = new OfficeObject(0, 0);
 		add(office);
@@ -59,9 +74,34 @@ class PlayState extends FlxState
 		currentTime = 0;
 
 
+		hudCamera = new FlxCamera();
+		hudCamera.bgColor = 0x00000000;
+
+		FlxG.cameras.add(hudCamera, false);
+
+
 		setAILevels();
 
 		FlxG.log.add("PlayState Loaded! Night: " + night);
+
+
+		// UI
+
+		powerText = new FlxText(0, 0, 0, "Power: ", 32, true);
+		usageText = new FlxText(0, 38, 0, "Usage: ", 32, true);
+		timeText = new FlxText(0, 78, 0, "Time: ", 32, true);
+		nightText = new FlxText(0, 118, 0, "Night ", 32, true);
+
+		powerText.cameras = [hudCamera];
+		usageText.cameras = [hudCamera];
+		timeText.cameras = [hudCamera];
+		nightText.cameras = [hudCamera];
+
+
+		add(powerText);
+		add(usageText);
+		add(timeText);
+		add(nightText);
 	}
 
 	function changeHour(timer:FlxTimer)
@@ -118,6 +158,7 @@ class PlayState extends FlxState
 
 		if (FlxG.keys.justPressed.S)
 		{
+			camsOpen = true;
 			this.openSubState(new CamsSubState(nightManager));
 		}
 
@@ -125,6 +166,9 @@ class PlayState extends FlxState
 		{
 			endNight();
 		}
+
+
+		powerText.text = "Power: " + Std.int(power) + "%";
 
 
 
@@ -145,6 +189,9 @@ class PlayState extends FlxState
 
 		var usage:Int = 1; // base power usage
 
+		if (camsOpen)
+    		usage++;
+
     	if (office.leftDoorClosed)
         	usage++;
 
@@ -157,12 +204,25 @@ class PlayState extends FlxState
     	if (office.rightLightOn)
         	usage++;
 
-    	power -= usage * elapsed;
+		var powerDrainRate:Float = 0.3;
+
+    	power -= usage * powerDrainRate * elapsed;
+
+		usageText.text = "Usage: " + usage;
+
+		nightText.text = "Night " + night;
+
+		if (currentTime == 0)
+		{
+			timeText.text = "12 AM";
+		} else
+		{
+			timeText.text = currentTime + " AM";
+		}
 
     	if (power <= 0)
     	{
     	    power = 0;
-    	    trace("Power out!");
     	}
 
 		//FlxG.log.add("Usage: " + usage);
