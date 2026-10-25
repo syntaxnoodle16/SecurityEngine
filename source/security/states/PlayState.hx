@@ -115,11 +115,14 @@ class PlayState extends FlxState
 	function endNight()
 	{
 		var nextNight = night + 1;
-		if (nextNight != 6 || nextNight != 7)
+		if (nextNight != 6 || nextNight != 8) // When the custom night is added, it will be night 7, therefore the night after that will be night 8.
 		{
 			SaveData.save.data.night = nextNight;
 			SaveData.save.flush();
 			FlxG.switchState(()->new PlayState(nextNight));
+		} else
+		{
+			FlxG.switchState(TitleScreenState.new);
 		}
 	}
 
