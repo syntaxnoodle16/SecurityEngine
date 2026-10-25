@@ -68,7 +68,7 @@ class NightManager extends FlxBasic
 			}
 		}
 
-		if (blueMan.currentRoom == leftDoorRoomID)
+		if (blueMan.currentRoom == leftDoorRoomID && playState.office.leftLightOn)
 		{
 			playState.office.blueManLeftDoor.visible = true;
 		} else
@@ -77,7 +77,7 @@ class NightManager extends FlxBasic
 		}
 
 
-		if (blueMan.currentRoom == rightDoorRoomID)
+		if (blueMan.currentRoom == rightDoorRoomID && playState.office.rightLightOn)
 		{
 			playState.office.blueManRightDoor.visible = true;
 		} else

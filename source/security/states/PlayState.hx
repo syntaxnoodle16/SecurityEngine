@@ -196,6 +196,14 @@ class PlayState extends FlxState
     		office.rightDoorClosed = !office.rightDoorClosed;
     		office.rightDoor.visible = office.rightDoorClosed;
 		}
+		if (!powerOut && FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.leftLightButton))
+		{
+			office.leftLightOn = !office.leftLightOn;
+		}
+		if (!powerOut && FlxG.mouse.justPressed && FlxG.mouse.overlaps(office.rightLightButton))
+		{
+			office.rightLightOn = !office.rightLightOn;
+		}
 
 
 
