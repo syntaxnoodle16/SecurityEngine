@@ -4,6 +4,7 @@ import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import openfl.Lib;
 
 class TitleScreenState extends FlxState
 {
@@ -12,6 +13,8 @@ class TitleScreenState extends FlxState
     var newGameButton:FlxText;
     var loadGameButton:FlxText;
     var loadNightButton:FlxText;
+
+    var engineVersion:FlxText;
 
     var currentNight:Int = 1;
     override public function create()
@@ -30,6 +33,11 @@ class TitleScreenState extends FlxState
         #if debug
         add(loadNightButton);
         #end
+
+        engineVersion = new FlxText(1024, 685, 0, "Security Engine v", 16);
+        add(engineVersion);
+
+        engineVersion.text = "Security Engine " + Lib.application.meta.get("version");
     }
 
     override public function update(elapsed:Float)
