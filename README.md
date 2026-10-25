@@ -16,7 +16,7 @@ This Engine is almost finished, but still has a few quirks. It is stable enough 
 
 ✅Animatronic AI
 
-❌Lights
+✅Lights
 
 ❌Custom Night
 
@@ -25,7 +25,7 @@ This Engine is almost finished, but still has a few quirks. It is stable enough 
 ❌Finish Documentation
 
 ## Features
-NOTICE: THE CURRENT BUILD DOES NOT HAVE ALL OF THESE YET
+
 - A customizable animatronic AI system
 - A scrolling office
 - Easy to customize cameras
