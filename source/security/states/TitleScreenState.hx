@@ -18,6 +18,9 @@ class TitleScreenState extends FlxState
     var engineVersion:FlxText;
 
     var currentNight:Int = 1;
+
+    var loadedNight:Int;
+
     override public function create()
     {
         title = new FlxSprite(0, 0);
@@ -38,6 +41,8 @@ class TitleScreenState extends FlxState
         engineVersion = new FlxText(1024, 685, 0, "Security Engine v", 16);
         add(engineVersion);
 
+        loadedNight = SaveData.save.data.night;
+
         engineVersion.text = "Security Engine " + Lib.application.meta.get("version");
     }
 
@@ -51,8 +56,6 @@ class TitleScreenState extends FlxState
         }
         if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(loadGameButton))
         {
-            var loadedNight:Int;
-            loadedNight = SaveData.save.data.night;
             FlxG.switchState(()->new PlayState(loadedNight));
         }
         if (FlxG.mouse.justPressed && FlxG.mouse.overlaps(newGameButton))
@@ -63,6 +66,8 @@ class TitleScreenState extends FlxState
         }
 
         loadNightButton.text = "Load Night: " + currentNight;
+
+        loadGameButton.text = "Continue - Night " + loadedNight;
 
         #if debug
         if (FlxG.keys.justPressed.LEFT)
@@ -76,5 +81,6 @@ class TitleScreenState extends FlxState
             FlxG.log.add(currentNight);
         }
         #end
+
     }
 }
