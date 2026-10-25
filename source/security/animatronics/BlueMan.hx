@@ -4,6 +4,9 @@ import security.systems.NightManager;
 import security.objects.OfficeObject;
 import security.systems.Animatronic;
 
+
+// This Animatronic is an example, delete it or rename it if you plan to add your own (be sure to remove references to it too)
+
 class BlueMan extends Animatronic
 {
     public function new(_office:OfficeObject, _nightManager:NightManager)

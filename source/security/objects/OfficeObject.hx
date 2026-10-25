@@ -78,7 +78,7 @@ class OfficeObject extends FlxGroup
         rightDoor.visible = false;
         add(rightDoor);
 
-        panSpeed = 10;
+        panSpeed = 700;
     }
 
     function set_x(value:Float):Float

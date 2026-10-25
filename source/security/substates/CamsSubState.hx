@@ -62,12 +62,6 @@ class CamsSubState extends FlxSubState
         }
 
         loadCurrentCam();
-
-        if (FlxG.keys.justPressed.C)
-        {
-            cast(_parentState, PlayState).camsOpen = false;
-            this.close();
-        }
     }
 
     function loadCurrentCam()

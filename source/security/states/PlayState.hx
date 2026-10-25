@@ -23,7 +23,7 @@ class PlayState extends FlxState
 
 	var currentTime:Int = 0; // The time, 0 = 12AM, 1 = 1AM, etc
 
-	var hourTime:Float = 45; // How long an hour in the game lasts in real time
+	var hourTime:Float = 45; // How long an hour in the game lasts in real time (in seconds)
 
 	var hourTimer:FlxTimer;
 
@@ -138,6 +138,10 @@ class PlayState extends FlxState
 		{
 			nightManager.blueMan.aiLevel = 12;
 		}
+		if (night == 6)
+		{
+			nightManager.blueMan.aiLevel = 14;
+		}
 	}
 
 	override public function update(elapsed:Float)
@@ -150,18 +154,25 @@ class PlayState extends FlxState
 
 		if (FlxG.mouse.overlaps(leftPan) && office.x > minX)
 		{
-			office.x += -office.panSpeed;
+			office.x += -office.panSpeed * elapsed;
 		}
 
 		if (FlxG.mouse.overlaps(rightPan) && office.x < maxX)
 		{
-			office.x += office.panSpeed;
+			office.x += office.panSpeed * elapsed;
 		}
 
-		if (!powerOut && FlxG.keys.justPressed.S)
+		if (!powerOut && !nightManager.gameOver && FlxG.keys.justPressed.S)
 		{
-			camsOpen = true;
-			this.openSubState(new CamsSubState(nightManager));
+			if (camsOpen)
+			{
+				camsOpen = false;
+				closeSubState();
+			} else
+			{
+				camsOpen = true;
+				openSubState(new CamsSubState(nightManager));
+			}
 		}
 
 		if (currentTime == 6)

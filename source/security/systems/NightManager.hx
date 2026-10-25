@@ -27,7 +27,7 @@ class NightManager extends FlxBasic
 
 	public var blueMan:BlueMan;
 
-	var gameOver:Bool = false;
+	public var gameOver:Bool = false;
 
 	public function new(_playState:PlayState)
     {
