@@ -5,8 +5,17 @@
 An Engine/Framework for Five Nights at Freddy's fangames made in [HaxeFlixel](https://haxeflixel.com/).
 
 ## NOTICE
-This Engine is in a prototype phase right now and is only public because of writing documentation.
-DO NOT USE FOR PRODUCTION YET
+This Engine is almost finished, but still has a few quirks. It is stable enough for production use, but is incomplete.
+
+## To-Dos
+✅Cameras
+✅Doors
+✅Night System
+✅Animatronic AI
+❌Lights
+❌Custom Night
+❌Save System
+❌Finish Documentation
 
 ## Features
 NOTICE: THE CURRENT BUILD DOES NOT HAVE ALL OF THESE YET
