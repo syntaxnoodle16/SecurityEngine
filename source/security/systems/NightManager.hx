@@ -47,12 +47,14 @@ class NightManager extends FlxBasic
 
 		rightDoorRoomID = 6;
 
-		cams = [
-    		new Cam(0, 1, "Show Stage", "ShowStage"),
-    		new Cam(1, 2, "Dining Area", "DiningArea"),
-    		new Cam(2, 3, "West Hall", "WestHall"),
-			new Cam(3, 4, "East Hall", "EastHall")
-		];
+		var cameraNames:Array<String> = ["Show Stage", "Dining Area", "West Hall", "East Hall"];
+        var cams:Array<Cam> = [];
+
+        for (i => name in cameraNames)
+        {
+            var formattedName:String = name.replace(" ", "");
+            cams.push(new Cam(i, i + 1, name, formattedName));
+        }
 	}
 
 	override public function update(elapsed:Float):Void
