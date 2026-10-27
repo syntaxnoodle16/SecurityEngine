@@ -126,31 +126,20 @@ class PlayState extends FlxState
 		}
 	}
 
+	var aiLevels:Map<Int, Int> = [
+	    [1] => 2,
+	    [2] => 5,
+	    [3] => 8,
+	    [4] => 10,
+	    [5] => 12,
+	    [6] => 14
+	];
 	function setAILevels()
 	{
-		if (night == 1)
+		if (aiLevels.exists(night))
 		{
-			nightManager.blueMan.aiLevel = 2;
-		}
-		if (night == 2)
-		{
-			nightManager.blueMan.aiLevel = 5;
-		}
-		if (night == 3)
-		{
-			nightManager.blueMan.aiLevel = 8;
-		}
-		if (night == 4)
-		{
-			nightManager.blueMan.aiLevel = 10;
-		}
-		if (night == 5)
-		{
-			nightManager.blueMan.aiLevel = 12;
-		}
-		if (night == 6)
-		{
-			nightManager.blueMan.aiLevel = 14;
+			var aiLevel:Int = aiLevels.get(night);
+			nightManager.blueMan.aiLevel = aiLevel;
 		}
 	}
 
@@ -191,7 +180,7 @@ class PlayState extends FlxState
 		}
 
 
-		powerText.text = "Power: " + Std.int(power) + "%";
+		powerText.text = 'Power: ${Std.int(power)}%';
 
 
 
@@ -240,16 +229,9 @@ class PlayState extends FlxState
     	power -= usage * powerDrainRate * elapsed;
 
 		usageText.text = "Usage: " + usage;
-
 		nightText.text = "Night " + night;
 
-		if (currentTime == 0)
-		{
-			timeText.text = "12 AM";
-		} else
-		{
-			timeText.text = currentTime + " AM";
-		}
+		timeText.text = (currentTime == 0 ? 12 : currentTime) + " AM";
 
 		if (power <= 0 && !powerOut)
 		{
@@ -259,15 +241,12 @@ class PlayState extends FlxState
 			closeSubState();
 
     		// Force doors open
-			office.leftDoorClosed = false;
-			office.rightDoorClosed = false;
+			office.leftDoorClosed = office.rightDoorClosed = false;
 
-    		office.leftDoor.visible = false;
-    		office.rightDoor.visible = false;
+    		office.leftDoor.visible = office.rightDoor.visible = false;
 
     		// Turn lights off
-    		office.leftLightOn = false;
-    		office.rightLightOn = false;
+    		office.leftLightOn = office.rightLightOn = false;
 
     		// Max out all AI (to kill the player faster, remove this if you want to add your own power outage sequence)
     		for (animatronic in nightManager.animatronics)
